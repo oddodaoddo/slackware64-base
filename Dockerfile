@@ -10,3 +10,5 @@ COPY mirrors /etc/slackpkg/mirrors
 RUN slackpkg update
 
 RUN slackpkg install-template slack64-dev-template
+
+RUN slackpkg clean-system
