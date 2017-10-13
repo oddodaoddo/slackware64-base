@@ -5,8 +5,6 @@ ENV FTP_HOME ftp://ftp.ussg.indiana.edu/linux/slackware/slackware64-14.2/slackwa
 
 RUN mkdir -p /opt/slack/packages
 
-COPY FILE_LIST_TRIMMED /opt/slack/packages/
+COPY slack64-dev-template.template /etc/slackpkg/templates/
 
-RUN for i in `cat /opt/slack/packages/FILE_LIST_TRIMMED`; do wget $FTP_HOME/$i; done
-
-RUN for i in *.txz; do installpkg $i; done
+RUN slackpkg install-template slack64-dev-template
